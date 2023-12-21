@@ -19,6 +19,14 @@ public class Player : MonoBehaviour
         {
             GetComponent<Rigidbody>().velocity -= moveDirection;
         }
+        if (Input.GetKey(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        if (Input.GetKey(KeyCode.Q))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
