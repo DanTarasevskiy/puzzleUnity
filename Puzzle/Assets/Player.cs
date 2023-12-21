@@ -30,8 +30,26 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(this.CompareTag("Player") && other.CompareTag("Finish")){
+        if(this.CompareTag("Player") && other.CompareTag("Finish"))
+        {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        if(this.CompareTag("Cube") && other.CompareTag("Cube"))
+        {
+            foreach(Activator button in FindObjectsOfType<Activator>())
+            {
+                button.canPush = false;
+            }
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if(this.CompareTag("Cube") && other.CompareTag("Cube"))
+        {
+            foreach(Activator button in FindObjectsOfType<Activator>())
+            {
+                button.canPush = true;
+            }
         }
     }
 }
